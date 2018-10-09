@@ -10,8 +10,6 @@ services:
       MESSAGE: 'hello world'
     ports:
       - '3001:3001'
-    volumes:
-      - ./node_modules:/express/node_modules
   webapp2:
     image: webapp:express
     container_name: express2
@@ -20,5 +18,3 @@ services:
     env_file: ./express.env
     ports:
       - '3002:3002'
-    volumes:
-      - ./node_modules:/express/node_modules

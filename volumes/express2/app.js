@@ -2,13 +2,13 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3001;
 const message = process.env.MESSAGE || 'hello word';
-const { appendFile } = require('fs');
+const { readFile } = require('fs');
 const { promisify } = require('util');
-const appendFileAsync = promisify(appendFile);
+const readFileAsync = promisify(readFile);
 app.get('/', (req, res) => res.send(`${message}`));
 app.listen(port, () => console.log(`app listening on port ${port}`));
-setInterval(async () => {
-  let date = new Date();
-  await appendFileAsync('./logs/log.txt', `The datetime is now ${date}`);
-  console.log('data written to file');
-}, 1000);
+setTimeout(async () => {
+  let data = await readFileAsync('./logs/log.txt');
+  console.log('read some data from the shared volume');
+  console.log(data);
+}, 5000);
