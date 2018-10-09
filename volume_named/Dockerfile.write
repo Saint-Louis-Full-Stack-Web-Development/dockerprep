@@ -1,0 +1,4 @@
+FROM node
+COPY write.js /app/
+WORKDIR /app
+CMD ["node", "write.js"]

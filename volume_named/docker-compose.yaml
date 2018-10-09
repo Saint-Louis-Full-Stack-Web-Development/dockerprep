@@ -1,0 +1,22 @@
+version: '3.2'
+services:
+  write:
+    build:
+      context: .
+      dockerfile: Dockerfile.write
+    image: volume:write
+    container_name: volume_write
+    volumes:
+      - 'data-volume:/app/logs'
+  read:
+    build:
+      context: .
+      dockerfile: Dockerfile.read
+    image: volume:read
+    container_name: volume_read
+    depends_on:
+      - write
+    volumes:
+      - 'data-volume:/app/logs'
+volumes:
+  data-volume:
