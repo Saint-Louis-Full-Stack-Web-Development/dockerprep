@@ -1,0 +1,2 @@
+FROM centos:latest
+CMD ["tail", "-f", "/var/log/yum.log"]
