@@ -1,0 +1,24 @@
+version: '3'
+services:
+  # postgres:
+    # networks:
+    #   - frontend
+    # image: postgres
+    # container_name: potgres
+    # environment:
+    #   POSTGRES_PASSWORD: 'thepassword'
+    # ports:
+    #  - "5432:5432"
+    # restart: always
+  postgres_connect_1:
+    build:
+      context: .
+      dockerfile: Dockerfile.ping
+    image: postgres_connect_test
+    container_name: postgres_connect_test
+    # networks:
+    #   - frontend
+    # depends_on:
+    #   - postgres
+# networks:
+#   frontend:
