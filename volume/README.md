@@ -17,7 +17,7 @@
         "Name": "test-vol",
         "Options": {},
         "Scope": "local"
-    }
+
 ```
 
 #docker mount volume into container
