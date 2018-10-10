@@ -1,0 +1,24 @@
+version: '3'
+services:
+  webapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: webapp:express
+    container_name: express1
+    environment:
+      MESSAGE: 'hello world'
+    ports:
+      - '3001:3001'
+    volumes:
+      - ./node_modules:/express/node_modules
+  webapp2:
+    image: webapp:express
+    container_name: express2
+    depends_on:
+      - webapp
+    env_file: ./express.env
+    ports:
+      - '3002:3002'
+    volumes:
+      - ./node_modules:/express/node_modules

@@ -1,0 +1,4 @@
+FROM node
+COPY read.js /app/
+WORKDIR /app
+CMD ["node", "read.js"]
