@@ -1,20 +1,20 @@
-version: '3'
-services:
-  webapp:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: webapp:express
-    container_name: express1
-    environment:
-      MESSAGE: 'hello world'
-    ports:
+version: '3'  # different versions support different features
+services: # service definition
+  webapp: # name of service
+    build: # build -def - I want the container to build if it doesn't exist
+      context: . # same as standard docker build . 
+      dockerfile: Dockerfile # which docker file to use
+    image: webapp:express # the image to use, or image to create during the build step
+    container_name: express1 # container name
+    environment: # environement definition, using <key>: <value> here
+      MESSAGE: 'hello world' 
+    ports: # exposing ports
       - '3001:3001'
-  webapp2:
-    image: webapp:express
-    container_name: express2
-    depends_on:
-      - webapp
-    env_file: ./express.env
-    ports:
-      - '3002:3002'
+  webapp2: # name of second webapp
+    image: webapp:express # name of second image
+    container_name: express2 # name of second container
+    depends_on: # this service will start after the first service
+      - webapp 
+    env_file: ./express.env # using an file to specify the environment this time
+    ports: 
+      - '3002:3002' # different ports

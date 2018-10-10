@@ -1,0 +1,18 @@
+#networking
+
+#show the default
+docker network ls
+
+#show the ip address
+ip addr show
+
+#The none network adds a container to a container-specific network stack. That container lacks a network interface. Attaching to such a container and looking at its stack you see this:
+
+docker attach nonenetcontainer
+
+docker network inspect bridge
+
+docker attach container1
+
+#see the hosts on the container
+cat /etc/hosts
